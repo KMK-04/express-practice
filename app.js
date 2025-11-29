@@ -43,3 +43,27 @@ console.log(response.data)
 res.json(response.data)
 })
 
+app.get('/likes', async (req, res) => {
+    var db = firebase.firestore();
+    const snapshot = await db.collection('likes').get().catch(e => console.log(e));
+    var results = [];
+    if (snapshot.empty) {
+        console.log("No result");
+        res.json([]);
+        return;
+    } else {
+        snapshot.forEach(doc => {
+            results.push(doc.data());
+        });
+    }
+    res.json(results);
+});
+
+
+
+
+
+
+
+
+
