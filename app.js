@@ -1,5 +1,6 @@
 var express = require('express')
 const logger = require('morgan')
+const axios = require('axios')
 const app = express()
 const port = 3000
 
@@ -28,4 +29,16 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 
+app.get('/musicSearch/:term',async(req,res)=>{
+const params={
+    term:req.params.term,
+    entity:"album",
+}
+const response = await axios.get(
+    'https://itunes.apple.com/search',
+    { params: params }
+)
+console.log(response.data)
+res.json(response.data)
+})
 
