@@ -7,6 +7,7 @@ const port = 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
+app.use(express.static('public'))
 
 app.post('/user', (req, res) => {
     console.log(req.body.name)
@@ -14,7 +15,7 @@ app.post('/user', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.sendFile('index.html')
 })
 
 app.get('/user/:id', (req, res) => {
