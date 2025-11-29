@@ -7,12 +7,6 @@ const port = 3000
 const firebase = require('./firebase')
 const serviceAccount = require('./firebasekey.json')
 
-if (admin.apps.length === 0) {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount)
-    })
-}
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
