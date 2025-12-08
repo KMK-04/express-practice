@@ -1,0 +1,1 @@
+ssh –p 2022 3000:localhost:3000 growthmk@jupyter.ac.kr -L

@@ -6,12 +6,13 @@ const app = express()
 const port = 3000
 const firebase = require('./firebase')
 const serviceAccount = require('./firebasekey.json')
+const cors = require('cors');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
 app.use(express.static('public'))
-
+app.use(cors({ origin : '*'}));
 app.post('/user', (req, res) => {
     res.send(req.body)
 })
@@ -23,7 +24,6 @@ app.get('/', (req, res) => {
 app.get('/user/:id', (req, res) => {
     res.send(`User id is ${req.params.id}`)
 })
-
 app.get('/user', (req, res) => {
     res.send(`User id is ${req.query.id}`)
 })
