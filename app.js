@@ -50,6 +50,7 @@ app.get('/likes', async (req, res) => {
     res.json(results)
 })
 
+
 app.post('/likes', async (req, res) => {
     const item = req.body
     const db = firebase.firestore()
